@@ -162,13 +162,14 @@ export const getMe = (req, res) => {
 };
 
 export const logoutUser = async (req, res) => {
-  if(req.user?.sessionId){
+  if (req.user?.sessionId) {
     await clearUserSession(req.user.sessionId);
   }
 
   res.clearCookie("access_token");
   res.clearCookie("refresh_token");
-  res.redirect("/login");
+
+  return res.redirect("/login");
 };
 
 // /getProfilePage
