@@ -162,7 +162,9 @@ export const getMe = (req, res) => {
 };
 
 export const logoutUser = async (req, res) => {
-  await clearUserSession(req.user.sessionId);
+  if(req.user?.sessionId){
+    await clearUserSession(req.user.sessionId);
+  }
 
   res.clearCookie("access_token");
   res.clearCookie("refresh_token");

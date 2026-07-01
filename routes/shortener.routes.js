@@ -14,11 +14,13 @@ router.get("/", getShortenerPage);
 
 router.post("/", postURLShortener);
 
-router.get("/:shortCode", redirectToShortLink);
+
 
 router.route("/edit/:id").get(getShortenerEditPage).post(postShortenerEditPage);
 
 router.route("/delete/:id").post(deleteShortCode);
+
+router.get("/:shortCode", redirectToShortLink);
 
 //default export
 // export default router;
